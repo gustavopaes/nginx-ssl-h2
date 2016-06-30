@@ -17,3 +17,7 @@
     EXPOSE 80 443
     
     CMD ["nginx"]
+
+------
+
+inspired by [Ehekatl](https://github.com/Ehekatl/docker-nginx-http2) code
