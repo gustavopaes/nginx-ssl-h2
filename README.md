@@ -1,6 +1,6 @@
 ## Docker image with nginx, ssl and http2 support
 
-`Dockerfile` example using my [image on docker hub](docker pull gustavopaes/nginx-ssl-h2):
+`Dockerfile` example using my [image on docker hub](https://hub.docker.com/r/gustavopaes/nginx-ssl-h2/):
 
     FROM gustavopaes/nginx-ssl-h2
     
