@@ -26,7 +26,12 @@ You can use volumes to site config, certificates and public data:
 
     docker pull gustavopaes/nginx-ssl-h2
     
-    docker run -p 127.0.0.1:80:80 -p 127.0.0.1:443:443 -i -v /home/user/website/nginx/cert:/etc/ngx/ssl/ -v /home/user/website/nginx/default.conf:/etc/nginx/sites-enabled/default -v /home/user/website/public/:/var/www gustavopaes/nginx-ssl-h2 nginx
+    docker run -p 127.0.0.1:80:80 -p 127.0.0.1:443:443 -i \
+        -v /home/user/website/nginx/cert:/etc/ngx/ssl/ \
+        -v /home/user/website/nginx/default.conf:/etc/nginx/sites-enabled/default \
+        -v /home/user/website/public/:/var/www \
+        gustavopaes/nginx-ssl-h2 \
+        nginx
 
 `/local/path/to/certs/` need to have all three files:
 * fullchain.pem
