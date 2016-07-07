@@ -22,20 +22,46 @@
 
 ## Command line example
 
-You can use volumes:
+You can use volumes to site config, certificates and public data:
 
-    docker run -v local/path/to/certs/:/etc/nginx/ssl/ -v local/nginx/site.conf:/etc/nginx/sites-enabled/default
+    docker pull gustavopaes/nginx-ssl-h2
+    
+    docker run -p 127.0.0.1:80:80 -p 127.0.0.1:443:443 -i -v /home/user/website/nginx/cert:/etc/ngx/ssl/ -v /home/user/website/nginx/default.conf:/etc/nginx/sites-enabled/default -v /home/user/website/public/:/var/www gustavopaes/nginx-ssl-h2 nginx
 
-`local/path/to/certs/` need to have all three files:
+`/local/path/to/certs/` need to have all three files:
 * fullchain.pem
 * privkey.pem
 * dhparam.pem
 
 ## why and how create `dhparam.pem` file?
 
-The main objective is to get **"A"** rating on [Qualys SSL Labs](https://www.ssllabs.com/ssltest/analyze.html), and to do that is necessary to create your own `dhparam`. You can read more on [Forward Secrecy & Diffie Hellman Ephemeral Parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters)
+The main objective is to get **"A"** rating on [Qualys SSL Labs](https://www.ssllabs.com/ssltest/analyze.html), and to do that is necessary to create your own `dhparam`. You can read more on [Forward Secrecy & Diffie Hellman Ephemeral Parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters).
 
     openssl dhparam -out dhparam.pem 4096
+    (will take long long time)
+
+
+## basic nginx site configuration
+
+You don't need configure any certification path or SSL configuration on your nginx site conf.
+
+    server {
+      listen 443 ssl http2;
+      server_name www.yourdomain.com.br;
+
+      index index.htm index.hml;
+      root /var/www/;
+      charset utf-8;
+
+      expires $expires;
+
+      gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+
+      ## all locations
+      location / {
+        error_page 404 /index.htm;
+      }
+    }
 
 
 ------
