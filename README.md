@@ -40,7 +40,7 @@ You can use volumes to site config, certificates and public data:
 
 ## why and how create `dhparam.pem` file?
 
-The main objective is to get **"A"** rating on [Qualys SSL Labs](https://www.ssllabs.com/ssltest/analyze.html), and to do that is necessary to create your own `dhparam`. You can read more on [Forward Secrecy & Diffie Hellman Ephemeral Parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters).
+The main goal is to get **"A"** rating on [Qualys SSL Labs](https://www.ssllabs.com/ssltest/analyze.html), and to do that is necessary to create your own `dhparam`. You can read more on [Forward Secrecy & Diffie Hellman Ephemeral Parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters).
 
     openssl dhparam -out dhparam.pem 4096
     (will take long long time)
