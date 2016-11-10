@@ -2,8 +2,8 @@ FROM debian:jessie
 
 MAINTAINER Gustavo Paes "gustavo.paes@gmail.com"
 
-ENV NGINX_VERSION 1.10.1
-ENV OPENSSL_VERSION 1.0.2h
+ENV NGINX_VERSION 1.10.2
+ENV OPENSSL_VERSION 1.0.2j
 
 # remove native openssl and upgrade system
 RUN apt-get update && apt-get upgrade -y
@@ -53,7 +53,7 @@ RUN wget -q http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # remove no neede more packages
-RUN apt-get purge build-essential wget -y \
+RUN apt-get purge build-essential wget ca-certificates -y \
   && apt-get autoremove -y
 
 # forward request and error logs to docker log collector

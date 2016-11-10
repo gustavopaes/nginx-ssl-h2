@@ -1,5 +1,12 @@
 # Docker image with nginx, ssl and http2 support
 
+## Versions
+
+    $ nginx -V
+    nginx version: nginx/1.10.2
+    built by gcc 4.9.2 (Debian 4.9.2-10)
+    built with OpenSSL 1.0.2j  26 Sep 2016
+
 ## Dockerfile example
 
 `Dockerfile` example using my [image on docker hub](https://hub.docker.com/r/gustavopaes/nginx-ssl-h2/):
